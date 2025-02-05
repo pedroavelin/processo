@@ -11,7 +11,7 @@
     <v-sheet class="" max-height="210">
       <div class="row">
         <div class="text-center">
-          <div class="header"><span class="pa-1 text-caption">Adicionar processo</span></div>
+          <div class="header"><span class="pa-1 text-caption" @click="addProceso()">Adicionar processo</span></div>
           <div>
             <v-btn elevation="1" density="compact" class="text-caption pa-1 border" color="red" rounded="0"
               variant="flat">Preso (100)
@@ -78,13 +78,32 @@
     </v-list>
   </v-navigation-drawer>
   <v-main class="style-1">
-    <v-img class="img-background" cover gradient="to top right, rgba(100,115,201,.3), rgba(25,232,72,.0)"
-      src="@/assets/bagImg.jpg"></v-img>
+    <v-img class="img-background" cover gradient="to top right, rgba(100,115,201,.3), rgba(25,232,72,.0)" src="@/assets/bagImg.jpg"></v-img>
 
     <div class="content-container-process">
       <ListProcess />
     </div>
   </v-main>
+    <!-- Modal para Adicionar Processo -->
+    <v-dialog transition="dialog-top-transition" v-model="modalAddProcesso" max-width="800px">
+    <v-card title="Novo Processo" color="cyan-darken-4 border-0" subtitle="Preencha os campos abaixo para adicionar um novo processo" prepend-icon="mdi-folder-open">
+    
+    
+
+        <template v-slot:actions>
+          <v-btn
+            class="ms-auto text-caption"
+            text="Ocultar"
+            variant="flat"
+            color="red"
+            density="compact"
+            rounded="10"
+            @click="modalAddProcesso = false"
+          ></v-btn>
+        </template>
+    </v-card>
+  </v-dialog>
+  <!-- Modal para Adicionar Processo -->
   <SpeedDial />
   <AppFooter />
 </template>
@@ -100,6 +119,11 @@ const menu = ref(false);
 const message = ref(false);
 const hints = ref(true);
 const drawer = ref(null)
+const modalAddProcesso = ref(false);
+
+const addProceso = () => {
+  modalAddProcesso.value = true;
+}
 
 const items = [
   { text: "Liquidação de Pena", icon: "mdi-folder", to: "/home" },

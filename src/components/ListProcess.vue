@@ -18,7 +18,7 @@
       </v-row>
     </v-container>
   </div>
-  <!-- Modal para Adicionar Processo -->
+  <!-- Modal ver informações do Processo -->
   <v-dialog transition="dialog-top-transition" v-model="isAddModalOpen" max-width="800px">
     <v-card title="Proc. Nº: 21/2021" color="cyan-darken-4 border-0" subtitle="Arguido(s)" prepend-icon="mdi-folder-open">
         <v-list lines="three" select-strategy="classic">
@@ -64,7 +64,7 @@
         </template>
     </v-card>
   </v-dialog>
-  <!-- Modal para Adicionar Processo -->
+  <!-- Modal ver informações do Processo -->
 
    <!-- Modal update Process -->
    <v-dialog
@@ -113,6 +113,7 @@ export default {
     const modalInfoProcess = () => {
       isAddModalOpen.value = true;
     }
+    
     return {
       isAddModalOpen,
       updateProcess,
