@@ -84,12 +84,10 @@
       <ListProcess />
     </div>
   </v-main>
+  
     <!-- Modal para Adicionar Processo -->
     <v-dialog transition="dialog-top-transition" v-model="modalAddProcesso" max-width="800px">
-    <v-card title="Novo Processo" color="cyan-darken-4 border-0" subtitle="Preencha os campos abaixo para adicionar um novo processo" prepend-icon="mdi-folder-open">
-    
-    
-
+    <v-card title="Novo Processo" color="cyan-darken-4 border-0" subtitle="Preencha os campos abaixo para adicionar um novo processo" prepend-icon="mdi-folder-open">  
         <template v-slot:actions>
           <v-btn
             class="ms-auto text-caption"
@@ -104,6 +102,7 @@
     </v-card>
   </v-dialog>
   <!-- Modal para Adicionar Processo -->
+
   <SpeedDial />
   <AppFooter />
 </template>
