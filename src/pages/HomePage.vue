@@ -85,9 +85,18 @@
   </v-main>
 
   <!-- Modal para Adicionar Processo -->
-  <v-dialog transition="dialog-top-transition" v-model="modalAddProcesso" max-width="800px">
-    <v-card title="Novo Processo" color="cyan-darken-4 border-0"
-      subtitle="Preencha os campos abaixo para adicionar um novo processo" prepend-icon="mdi-folder-open">
+  <v-dialog transition="dialog-top-transition" v-model="modalAddProcesso" max-width="800px" persistent>
+    <v-card title="Novo Processo" color="border-0" subtitle="Preencha os campos abaixo para adicionar um novo processo" prepend-icon="mdi-folder-open">
+      <v-card-text>
+
+        <v-for>
+          <v-text-field label="Informe o número do processo" density="compact"/>
+          <v-text-field label="Informe o ano do processo" density="compact"/>
+          <v-text-field label="Informe o tipo de crime" density="compact"/>
+        </v-for>
+
+      </v-card-text>
+
       <template v-slot:actions>
         <v-btn class="ms-auto text-caption" text="Ocultar" variant="flat" color="red" density="compact" rounded="10"
           @click="modalAddProcesso = false"></v-btn>
