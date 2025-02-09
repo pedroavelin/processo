@@ -1,11 +1,11 @@
 <template>
-  <div class="list-process">
+  <div class="list-process text-caption">
     <v-container fluid>
       <v-row>
-        <v-col class="text-truncate" v-for="n in 30" :key="n" cols="2">
-          <v-card  variant="variant-1" border color="black" subtitle="11/2012" elevation="6" @click="modalInfoProcess" prepend-icon="mdi-folder-open" link height="150">
+        <v-col class="text-truncate" v-for="n in 18" :key="n" cols="2">
+          <v-card  variant="variant-1" color="black" subtitle="11/2012" elevation="6" @click="modalInfoProcess" prepend-icon="mdi-folder-open" link height="150">
             <v-card-subtitle class="text-truncate"><span>Roubo Qualificado</span></v-card-subtitle>
-            <v-card-text class="text-truncate bg-surface-light pt-4">
+            <v-card-text class="text-truncate bg-surface-light pt-4 text-caption">
               Julgamento: 12/10/2025 <br>
               Arguído(s): 3 <br>
               Solto(s): 2

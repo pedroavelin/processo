@@ -15,13 +15,14 @@
             <v-btn elevation="0" density="compact" class="text-caption" rounded="0">Novo Processo</v-btn>
           </div>
           <div>
-            <v-btn density="compact" class="text-caption border-0" color="red" rounded="0" variant="flat">Preso (100)</v-btn>
-            <v-btn density="compact" class="text-caption border-0" color="yellow-darken-4" variant="flat" rounded="0">Solto (999)</v-btn>
+            <v-btn density="compact" class="text-caption border-0" color="red" rounded="0" variant="flat">Preso
+              (100)</v-btn>
+            <v-btn density="compact" class="text-caption border-0" color="yellow-darken-4" variant="flat"
+              rounded="0">Solto (999)</v-btn>
           </div>
         </div>
       </div>
     </v-sheet>
-
     <!-- Avatar com menu -->
     <!-- <v-menu v-model="menu" :close-on-content-click="false" location="end">
       <template v-slot:activator="{ props }">
@@ -86,13 +87,69 @@
 
   <!-- Modal para Adicionar Processo -->
   <v-dialog transition="dialog-top-transition" v-model="modalAddProcesso" max-width="800px" persistent>
-    <v-card title="Novo Processo" color="border-0" subtitle="Preencha os campos abaixo para adicionar um novo processo" prepend-icon="mdi-folder-open">
+    <v-card title="Novo Processo" color="border-0" subtitle="Preencha os campos abaixo para adicionar um novo processo"
+      prepend-icon="mdi-folder-open">
       <v-card-text>
 
         <v-for>
-          <v-text-field label="Informe o número do processo" density="compact"/>
-          <v-text-field label="Informe o ano do processo" density="compact"/>
-          <v-text-field label="Informe o tipo de crime" density="compact"/>
+          <!-- Lista dinâmica -->
+          <v-row class="mb-0" no-gutters>
+            <v-col cols="4">
+              <v-card subtitle="Informações do processo" elevation="0">
+                <v-text-field class="text-caption" label="Número do processo" density="compact" />
+                <v-text-field class="text-caption" label="Ano" density="compact" />
+                <v-text-field class="text-caption" label="Crime" density="compact" />
+              </v-card>
+            </v-col>
+
+            <v-col cols="8">
+              <v-list>
+                <div class="d-flex justify-space-between">
+                  <div class=""><span class="text-caption">Arguido(s)</span></div>
+                  <div class=""><span class="text-caption"> <v-icon icon="mdi-plus"></v-icon> </span></div>
+                </div>
+                <v-card class="overflow-y-auto text-caption" elevation="0" max-height="270">
+                  <v-list-item class="p-0 mt-0 border" v-for="i in 1" :key="i">
+
+                    <v-list-item-title>
+                      <v-row no-gutters>
+                        <v-col cols="8">
+                          <v-text-field class="text-caption mx-1" label="Nome" density="compact" />
+                        </v-col>
+                        <v-col cols="4">
+                          <v-text-field class="text-caption" label="Apelido" density="compact" />
+                        </v-col>
+                      </v-row>
+                      <v-row no-gutters>
+                        <v-col cols="4">
+                          <v-text-field class="text-caption mx-1" label="Julgamento" density="compact" />
+                        </v-col>
+                        <v-col cols="4">
+                          <v-text-field class="text-caption mx-1" label="Estado" density="compact" />
+                        </v-col>
+                        <v-col cols="4">
+                          <v-text-field class="text-caption" label="Pena" density="compact" />
+                        </v-col>
+                        <v-textarea clear-icon="mdi-close-circle" label="Descrição" model-value="Breve descrição do processso" rows="1" clearable></v-textarea>
+                      </v-row>
+                    </v-list-item-title>
+
+                    <template v-slot:append>
+                      <!-- START - MENU -->
+                      <v-menu>
+                        <template v-slot:activator="{ props }">
+                          <v-btn @click="updateProcess = true" density="compact" class="text-caption" color="red"
+                            icon="mdi-delete" variant="tonal" v-bind="props">
+                          </v-btn>
+                        </template>
+                      </v-menu>
+                    </template>
+                  </v-list-item>
+                </v-card>
+              </v-list>
+            </v-col>
+          </v-row>
+          <!-- Lista dinâmica -->
         </v-for>
 
       </v-card-text>
@@ -101,6 +158,7 @@
         <v-btn class="ms-auto text-caption" text="Ocultar" variant="flat" color="red" density="compact" rounded="10"
           @click="modalAddProcesso = false"></v-btn>
       </template>
+
     </v-card>
   </v-dialog>
   <!-- Modal para Adicionar Processo -->
@@ -134,9 +192,10 @@ const items = [
 </script>
 
 <style>
-.btn-add-processo{
+.btn-add-processo {
   cursor: pointer;
 }
+
 .img-background {
   position: fixed;
   top: 0;
