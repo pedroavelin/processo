@@ -1,17 +1,17 @@
-<template>
+  <template>
   <div class="list-process text-caption">
     <v-container fluid>
       <v-row>
-        <v-col class="text-truncate" v-for="n in 18" :key="n" cols="2">
-          <v-card  variant="variant-1" color="black" subtitle="11/2012" elevation="6" @click="modalInfoProcess" prepend-icon="mdi-folder-open" link height="150">
-            <v-card-subtitle class="text-truncate"><span>Roubo Qualificado</span></v-card-subtitle>
+        <v-col class="text-truncate" v-for="n in 30" :key="n" cols="2">
+          <v-card class="bg-indigo" subtitle="11/2012" elevation="16" @click="modalInfoProcess" prepend-icon="mdi-folder-open" link height="150">
+            <v-card-subtitle class="text-truncate"><span class="">Roubo Qualificado concorrido com furto</span></v-card-subtitle>
             <v-card-text class="text-truncate bg-surface-light pt-4 text-caption">
               Julgamento: 12/10/2025 <br>
               Arguído(s): 3 <br>
               Solto(s): 2
             </v-card-text>
             <template v-slot:append>
-              <v-icon color="success" icon="mdi-check"></v-icon>
+              <v-icon color="success" icon="mdi-search"></v-icon>
             </template>
           </v-card>
         </v-col>
@@ -20,18 +20,19 @@
   </div>
   <!-- Modal ver informações do Processo -->
   <v-dialog transition="dialog-top-transition" v-model="isAddModalOpen" max-width="800px">
-    <v-card title="Proc. Nº: 21/2021" color="cyan-darken-4 border-0" subtitle="Arguido(s)" prepend-icon="mdi-folder-open">
+    <v-card subtitle="Proc. Nº: 21/2021" prepend-icon="mdi-folder-open">
         <v-list lines="three" select-strategy="classic">
-          <v-card color="teal-darken-4 border-0" elevation="16" class="overflow-y-auto" max-height="250" >
-            <v-list-item class="p-0 mt-0 border" v-for="i in 10" :key="i" link>
+          <v-card elevation="16" class="overflow-y-auto" max-height="250" >
+            <v-list-item class="p-0 mt-0" v-for="i in 10" :key="i" link>
 
-              <v-list-item-title> Pedro Avelino Epalanga <br> 
+              <v-list-item-title class="text-caption">
+                Pedro Avelino Epalanga <br> 
                 Julgamento: <v-icon color="success" icon="mdi mdi-calendar" size="15" /> 12/12/2024 <br>
                 Preso: <v-icon color="warning" icon="mdi mdi-calendar" size="15" /> 11/12/2004 <br>
                 Pena: 8 anos
               </v-list-item-title>
 
-              <v-list-item-subtitle>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste non illum, eaque alias culpa, vero error esse provident ipsum totam qui odio tempore eveniet dolores ex aliquid eos? Commodi, enim.</v-list-item-subtitle>
+              <v-list-item-subtitle class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste non illum, eaque alias culpa, vero error esse provident ipsum totam qui odio tempore eveniet dolores ex aliquid eos? Commodi, enim.</v-list-item-subtitle>
             
               <template v-slot:append>
             <!-- START - MENU -->
@@ -41,7 +42,8 @@
                 @click="updateProcess = true"
                   color="info"
                   icon="mdi-pencil-outline"
-                  variant="text"
+                  variant="flat"
+                  density="compact"
                   v-bind="props"
                 >
                 </v-btn>

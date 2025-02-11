@@ -1,10 +1,9 @@
 <template>
-  <v-app-bar color="blue-darken-4" density="compact" elevation="10">
+  <v-app-bar color="" density="compact" elevation="10">
     <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
     <v-app-bar-title>PLANETA</v-app-bar-title>
 
-    <v-combobox prepend-inner-icon="mdi-magnify" v-model="value" :items="['101', '312', '413', '114', '65', '216']"
-      density="compact" label="Pesquisar processo ..." class="mt-5 text-caption"></v-combobox>
+    <v-combobox prepend-inner-icon="mdi-magnify" v-model="value" :items="['101', '312', '413', '114', '65', '216']" density="compact" label="Pesquisar processo ..." class="mt-5 text-caption"></v-combobox>
 
     <v-spacer></v-spacer>
 
@@ -24,32 +23,6 @@
       </div>
     </v-sheet>
     <!-- Avatar com menu -->
-    <!-- <v-menu v-model="menu" :close-on-content-click="false" location="end">
-      <template v-slot:activator="{ props }">
-        <v-btn icon v-bind="props">
-          <v-avatar image="@/assets/user.png"></v-avatar>
-        </v-btn>
-      </template>
-
-<v-card min-width="300">
-  <v-list>
-    <v-list-item prepend-avatar="@/assets/user.png" subtitle="Escrivã de direito" title="Pedro Epalanga">
-    </v-list-item>
-  </v-list>
-  <v-divider></v-divider>
-
-  <v-list>
-    <v-list-item>
-      <router-link class="" to="/">Ver meu Perfil</router-link>
-    </v-list-item>
-  </v-list>
-
-  <v-card-actions>
-    <v-spacer></v-spacer>
-    <v-btn color="primary" variant="text" to="/">Terminar sessão</v-btn>
-  </v-card-actions>
-</v-card>
-</v-menu> -->
   </v-app-bar>
   <v-navigation-drawer v-model="drawer" temporary>
     <v-img src="https://picsum.photos/1920/1080?random"
@@ -77,50 +50,50 @@
     </v-list>
   </v-navigation-drawer>
   <v-main class="style-1">
-    <!-- <v-img class="img-background" cover gradient="to top right, rgba(100,115,201,.3), rgba(25,32,172,.20)"
-      src="@/assets/bagImg.jpg"></v-img> -->
-
+    <v-img class="img-background" cover gradient="to top right, rgba(0,100,201,.1),  rgba(125,132,972,.1)"
+      src="@/assets/bagImg.jpg"></v-img>
     <div class="content-container-process">
       <ListProcess />
     </div>
   </v-main>
 
   <!-- Modal para Adicionar Processo -->
-  <v-dialog transition="dialog-top-transition" v-model="modalAddProcesso" max-width="800px" persistent>
-    <v-card title="Novo Processo" color="border-0" subtitle="Preencha os campos abaixo para adicionar um novo processo"
+  <v-dialog transition="dialog-top-transition" v-model="modalAddProcesso" max-width="756px" persistent>
+    <v-card  color="border-0" subtitle="Preencha os campos abaixo para adicionar um novo processo"
       prepend-icon="mdi-folder-open">
       <v-card-text>
+        <!-- Lista dinâmica -->
+        <v-row class="mb-0" no-gutters>
+          <v-col cols="4">
+            <v-card elevation="0">
+              <v-text-field class="text-caption" label="Número do processo" density="compact" />
+              <v-text-field class="text-caption" label="Ano" density="compact" />
+              <v-textarea clear-icon="mdi-close-circle" label="Crime" rows="6" clearable></v-textarea>
+            </v-card>
+          </v-col>
 
-        <v-for>
-          <!-- Lista dinâmica -->
-          <v-row class="mb-0" no-gutters>
-            <v-col cols="4">
-              <v-card subtitle="Informações do processo" elevation="0">
-                <v-text-field class="text-caption" label="Número do processo" density="compact" />
-                <v-text-field class="text-caption" label="Ano" density="compact" />
-                <v-text-field class="text-caption" label="Crime" density="compact" />
-              </v-card>
-            </v-col>
-
-            <v-col cols="8">
-              <v-list>
-                <div class="d-flex justify-space-between">
-                  <div class=""><span class="text-caption">Arguido(s)</span></div>
-                  <div class=""><span class="text-caption"> <v-icon icon="mdi-plus"></v-icon> </span></div>
-                </div>
-                <v-card class="overflow-y-auto text-caption" elevation="0" max-height="270">
-                  <v-list-item class="p-0 mt-0 border" v-for="i in 1" :key="i">
-
-                    <v-list-item-title>
-                      <v-row no-gutters>
-                        <v-col cols="8">
+          <v-col cols="8">
+            <v-list>
+              <div class="d-flex justify-space-between">
+                <div class=""><span class="text-caption mx-4">Arguido(s)</span></div>
+                <div class=""><span class="text-caption"> Adicionar arguido </span></div>
+              </div>
+              <v-card class="overflow-y-auto text-caption" elevation="0" max-height="275">
+                <div v-if="mostrarListaDeArguidos">
+                  <v-list-item class="p-0 mb-0" v-for="i in 2" :key="i">
+                    <v-list-item-title class="border">
+                      <v-row no-gutters class="mt-1">
+                        <v-col cols="11">
                           <v-text-field class="text-caption mx-1" label="Nome" density="compact" />
                         </v-col>
-                        <v-col cols="4">
-                          <v-text-field class="text-caption" label="Apelido" density="compact" />
+                        <v-col cols="1">
+                          <div class="mt-1">
+                            <v-btn density="compact" variant="elevated" class="text-caption mx-1" color="red"
+                              icon="mdi-delete"></v-btn>
+                          </div>
                         </v-col>
                       </v-row>
-                      <v-row no-gutters>
+                      <v-row no-gutters class="mx-1">
                         <v-col cols="4">
                           <v-text-field class="text-caption mx-1" label="Julgamento" density="compact" />
                         </v-col>
@@ -130,39 +103,40 @@
                         <v-col cols="4">
                           <v-text-field class="text-caption" label="Pena" density="compact" />
                         </v-col>
-                        <v-textarea clear-icon="mdi-close-circle" label="Descrição" model-value="Breve descrição do processso" rows="1" clearable></v-textarea>
+                        <v-textarea clear-icon="mdi-close-circle" label="Descrição" rows="1" clearable></v-textarea>
                       </v-row>
                     </v-list-item-title>
-
-                    <template v-slot:append>
-                      <!-- START - MENU -->
-                      <v-menu>
-                        <template v-slot:activator="{ props }">
-                          <v-btn @click="updateProcess = true" density="compact" class="text-caption" color="red"
-                            icon="mdi-delete" variant="tonal" v-bind="props">
-                          </v-btn>
-                        </template>
-                      </v-menu>
-                    </template>
                   </v-list-item>
-                </v-card>
-              </v-list>
-            </v-col>
-          </v-row>
-          <!-- Lista dinâmica -->
-        </v-for>
-
+                </div>
+                <div v-else>
+                  <v-card color="" height="300">
+                    <div class="text-center">
+                      <div class="mt-5">
+                        <span class="text-h6">Nenhum arguido adicionado ao <br> processo</span>
+                      </div>
+                    </div>
+                  </v-card>
+                </div>
+              </v-card>
+            </v-list>
+          </v-col>
+        </v-row>
+        <!-- Lista dinâmica -->
       </v-card-text>
-
-      <template v-slot:actions>
-        <v-btn class="ms-auto text-caption" text="Ocultar" variant="flat" color="red" density="compact" rounded="10"
-          @click="modalAddProcesso = false"></v-btn>
-      </template>
-
+      <v-divider></v-divider>
+      <div class="d-flex justify-end">
+        <div class="">
+          <v-btn class="text-caption" text="Fechar" variant="flat" color="red" density="compact" rounded="0"
+            @click="modalAddProcesso = false"></v-btn>
+        </div>
+        <div class="">
+          <v-btn class="text-caption" text="Salvar" variant="flat" color="success" density="compact" rounded="0"
+            @click="modalAddProcesso = false"></v-btn>
+        </div>
+      </div>
     </v-card>
   </v-dialog>
   <!-- Modal para Adicionar Processo -->
-
   <SpeedDial />
   <AppFooter />
 </template>
@@ -173,10 +147,8 @@ import SpeedDial from "@/components/SpeedDial.vue";
 import AppFooter from "@/components/AppFooter.vue";
 import ListProcess from "@/components/ListProcess.vue";
 
-const fav = ref(true);
-const menu = ref(false);
-const message = ref(false);
-const hints = ref(true);
+const mostrarListaDeArguidos = ref(true);
+
 const drawer = ref(null)
 const modalAddProcesso = ref(false);
 
@@ -185,9 +157,12 @@ const addProceso = () => {
 }
 
 const items = [
-  { text: "Liquidação de Pena", icon: "mdi-folder", to: "/home" },
-  { text: "Mandado de Notificação", icon: "mdi-account-multiple", to: "/about" },
-  { text: "Sobre", icon: "mdi-account-multiple", to: "/" },
+  { text: "Processo", icon: "mdi-folder", to: "/home" },
+  { text: "Documentos", icon: "mdi-folder", to: "/documento" },
+  { text: "Auditoria", icon: "mdi-account-multiple", to: "/auditoria"},
+  { text: "Utilizadores", icon: "mdi-account-multiple", to: "/utilizador"},
+  { text: "Permissões", icon: "mdi-account-multiple", to: "/permissoes" },
+  { text: "Sobre", icon: "mdi-account-multiple", to: "/sobre"},
 ];
 </script>
 
