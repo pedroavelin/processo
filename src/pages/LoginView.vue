@@ -2,12 +2,10 @@
   <v-container class="d-flex justify-center align-center" style="height: 100vh;">
     <v-sheet rounded>
       <v-card class="mx-auto px-6 py-8" width="350">
-        <v-form v-model="form" @submit.prevent="onSubmit">
+        <v-form @submit.prevent="login()">
           
           <v-text-field
-            v-model="email"
-            :readonly="loading"
-            :rules="[required]"
+            v-model="user.email"
             class="mb-2"
             label="Seu Email"
             clearable
@@ -15,23 +13,18 @@
           ></v-text-field>
 
           <v-text-field
-            v-model="password"
-            :readonly="loading"
-            :rules="[required]"
+            v-model="user.password"
             label="Palavra passe"
             placeholder="Digite a sua palavra passe"
             clearable
           ></v-text-field>
 <br>
           <v-btn
-            :disabled="!form"
-            :loading="loading"
             color="success"
             size="large"
             type="submit"
             variant="flat"
             block
-            @click="login()"
           >
             Entrar
           </v-btn>
@@ -42,24 +35,24 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { useRouter } from "vue-router";
+import https from '@/services/https.js';
+import { reactive } from "vue";
+import { useAuth } from '@/stores/auth.js'
 
-const router = useRouter();
-const form = ref(false);
-const email = ref(null);
-const password = ref(null);
-const loading = ref(false);
+const auth = useAuth();
+const user = reactive({
+  email: 'filipe@gmail.com',
+  password: '0043sdjasd'
+})
 
-const onSubmit = () => {
-  if (!form.value) return;
-
-  loading.value = true;
-  setTimeout(() =>{
-    loading.value= false;
-    router.push("/home")
-  }, 2000);
-};
-
-const required = (v) => !!v || "Campo obrigatório";
+  async function login(){
+    try {
+      const { data } = await https.post('/auth/login', user);
+      console.log(data);
+      auth.setToken(data.access_token);
+      auth.setUser(data.user)
+    } catch (error) {
+      console.log(error?.response?.data);
+    }
+  } 
 </script>
