@@ -38,7 +38,9 @@
 import https from '@/services/https.js';
 import { reactive } from "vue";
 import { useAuth } from '@/stores/auth.js'
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const auth = useAuth();
 const user = reactive({
   email: 'filipe@gmail.com',
@@ -51,6 +53,8 @@ const user = reactive({
       console.log(data);
       auth.setToken(data.access_token);
       auth.setUser(data.user)
+
+      router.push({ name: 'home' });
     } catch (error) {
       console.log(error?.response?.data);
     }

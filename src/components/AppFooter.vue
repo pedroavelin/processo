@@ -1,14 +1,14 @@
 <template>
-  <v-footer v-if="route.name !== '/'" height="40" app color="">
+  <v-footer elevation="16" v-if="route.name !== '/'" height="40" app color="">
     <v-badge dot color="success">
       <v-icon icon="mdi-account" class="mx-1"></v-icon>
     </v-badge>
     
-    <a class="text-decoration-none text-caption mx-3" href="#!" rel="noopener noreferrer" color="">
-      <span class="">
-        Utilizador: Pedro Epalanga - CD
+    <router-link to="/perfil" class="text-decoration-none text-caption mx-3" href="#!" rel="noopener noreferrer" color="">
+      <span class="" v-if="auth.isAuthenticated()">
+        <p>Utilizador: {{ auth.fullName }}</p>
       </span>
-      </a>
+      </router-link>
     <div
       class="text-caption text-disabled" style="position: absolute; right: 16px;">
       <span>&copy; 2024-{{ (new Date()).getFullYear() }}</span> <span class="d-none d-sm-inline-block">15ª - Cacuaco</span>
@@ -26,5 +26,13 @@
 </template>
 <script setup>
 import { useRoute } from 'vue-router';
+import { useAuth } from '@/stores/auth.js'
+import { onMounted } from 'vue';
+
+const auth = useAuth();
 const route = useRoute();
+
+onMounted(async () => {
+  await auth.getUserDetails();
+});
 </script>
