@@ -1,17 +1,17 @@
 <template>
-  <v-footer elevation="16" v-if="route.name !== '/'" height="40" app color="">
+  <v-footer elevation="16" v-if="route.name !== '/'" height="40" app class="bg-gradient">
     <v-badge dot color="success">
       <v-icon icon="mdi-account" class="mx-1"></v-icon>
     </v-badge>
-    
-    <router-link to="/perfil" class="text-decoration-none text-caption mx-3" href="#!" rel="noopener noreferrer" color="">
-      <span class="" v-if="auth.isAuthenticated()">
+
+    <router-link to="/perfil" class="text-decoration-none mx-3 text-white" href="#!" rel="noopener noreferrer">
+      <span v-if="auth.isAuthenticated()">
         <p>Utilizador: {{ auth.fullName }}</p>
       </span>
       </router-link>
     <div
       class="text-caption text-disabled" style="position: absolute; right: 16px;">
-      <span>&copy; 2024-{{ (new Date()).getFullYear() }}</span> <span class="d-none d-sm-inline-block">15ª - Cacuaco</span>
+      <span class="text-white">&copy; 2024-{{ (new Date()).getFullYear() }}</span> <span class="d-none d-sm-inline-block text-white">15ª - Cacuaco</span>
       —
       <a
         class="text-decoration-none on-surfaces"

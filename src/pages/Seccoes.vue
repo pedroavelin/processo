@@ -4,11 +4,8 @@ import AppBar from '@/components/AppBar.vue';
 import NavigationDrawer from '@/components/NavigationDrawer.vue';
 import { onMounted } from 'vue';
 import { useSeccaoStore } from '@/stores/seccao';
-import { useAuth } from '@/stores/auth.js'
-
 const seccaoStore = useSeccaoStore();
 
-const auth = useAuth();
 // Buscar os dados do utilizador ao carregar o componente
 onMounted(() => {
   seccaoStore.listarSeccao();
@@ -19,33 +16,31 @@ onMounted(() => {
 <template>
   <AppBar />
   <NavigationDrawer />
-  <br>
-  <br>
-  <br>
-  <div v-if="auth.isAuthenticated" class="mt-5 mx-4">
-    <h1 v-if="seccaoStore.carregando">Carregando...</h1>
+  <br v-for="i in 3" :key="i">
+   <h1 v-if="seccaoStore.carregando">Carregando...</h1>
     <h1 v-else-if="seccaoStore.erro">{{ seccaoStore.erro }}</h1>
+    <v-container fluid>
+      <v-row>
+        <v-col v-for="(item, index) in seccaoStore.seccao" :key="index" cols="2" >
+          <v-card  class="mx-auto" max-width="250" elevation="10" height="260">
+            <v-img class="align-end text-white" height="200" gradient="to top right, rgba(100,111,112,.900),  rgba(2,3,1,.1)" src="@/assets/imgSeccao.webp" cover>
+              <v-card-title>15ª Secção</v-card-title>
+            </v-img>
 
-    <v-table>
-      <thead>
-        <tr>
-          <th class="text-left">
-            Secção
-          </th>
-          <th class="text-left">
-            Número
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(item, index) in seccaoStore.seccao" :key="index">
-          <td>{{ item.nome }}</td>
-          <td>{{ item.numero }}</td>
-        </tr>
-      </tbody>
-    </v-table>
+            <v-card-subtitle class="pt-1">
+              {{ item.numero }}
+            </v-card-subtitle>
 
-    <!-- <p v-else>Usuário não autenticado</p> -->
-  </div>
+            <v-card-text>
+              <div>{{ item.nome }}</div>
+              <div>Letra(s): 11</div>
+            </v-card-text>
+
+
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+
   <AppFooter />
 </template>

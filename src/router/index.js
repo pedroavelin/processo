@@ -7,9 +7,9 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
 import { components } from 'vuetify/dist/vuetify-labs.js'
-import HomePage from '@/pages/HomePage.vue'
-import LoginView from '@/pages/LoginView.vue'
-import PerfilView from '@/pages/PerfilView.vue'
+import ProcessosPage from '@/pages/ProcessosPage.vue'
+import LoginPage from '@/pages/LoginPage.vue'
+import PerfilPage from '@/pages/PerfilPage.vue'
 import Seccoes from '@/pages/Seccoes.vue'
 import { useAuth } from '@/stores/auth.js'
 
@@ -17,12 +17,12 @@ const routes = [
   {
     path: '/',
     name: 'login',
-    component: LoginView,
+    component: LoginPage,
   },
   {
-    path: '/Home',
-    name: 'home',
-    component: HomePage,
+    path: '/Processo',
+    name: 'processos',
+    component: ProcessosPage,
     meta: {
       auth: true
     }
@@ -30,7 +30,7 @@ const routes = [
   {
     path: '/Perfil',
     name: 'perfl',
-    component: PerfilView,
+    component: PerfilPage,
     meta: {
       auth: true
     }

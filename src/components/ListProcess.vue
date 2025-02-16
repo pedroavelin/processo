@@ -1,11 +1,11 @@
   <template>
-  <div class="list-process text-caption">
+  <div class="list-process">
     <v-container fluid>
       <v-row>
-        <v-col class="text-truncate" v-for="n in 30" :key="n" cols="2">
-          <v-card class="bg-indigo" subtitle="11/2012" elevation="16" @click="modalInfoProcess" prepend-icon="mdi-folder-open" link height="150">
-            <v-card-subtitle class="text-truncate"><span class="">Roubo Qualificado concorrido com furto</span></v-card-subtitle>
-            <v-card-text class="text-truncate bg-surface-light pt-4 text-caption">
+        <v-col v-for="n in 30" :key="n" cols="2">
+          <v-card class="card-process" subtitle="11/2012" elevation="16" @click="modalInfoProcess" prepend-icon="mdi-folder-open" link height="150">
+            <v-card-subtitle><span class="changeColor">Roubo Qualificado concorrido com furto</span></v-card-subtitle>
+            <v-card-text class="bg-blue-grey-lighten-5">
               Julgamento: 12/10/2025 <br>
               Arguído(s): 3 <br>
               Solto(s): 2
@@ -26,14 +26,14 @@
             <v-list-item class="p-0 mt-0" v-for="i in 10" :key="i" link>
 
               <v-list-item-title class="text-caption">
-                Pedro Avelino Epalanga <br> 
+                Pedro Avelino Epalanga <br>
                 Julgamento: <v-icon color="success" icon="mdi mdi-calendar" size="15" /> 12/12/2024 <br>
                 Preso: <v-icon color="warning" icon="mdi mdi-calendar" size="15" /> 11/12/2004 <br>
                 Pena: 8 anos
               </v-list-item-title>
 
               <v-list-item-subtitle class="text-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste non illum, eaque alias culpa, vero error esse provident ipsum totam qui odio tempore eveniet dolores ex aliquid eos? Commodi, enim.</v-list-item-subtitle>
-            
+
               <template v-slot:append>
             <!-- START - MENU -->
             <v-menu>
@@ -115,7 +115,7 @@ export default {
     const modalInfoProcess = () => {
       isAddModalOpen.value = true;
     }
-    
+
     return {
       isAddModalOpen,
       updateProcess,
@@ -124,3 +124,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+span.changeColor{
+  color: #fff;
+}
+</style>

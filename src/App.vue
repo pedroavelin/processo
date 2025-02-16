@@ -24,4 +24,15 @@
     border-radius: 10px;
     border: 3px solid #ffffff;
   }
+  .bg-gradient{
+    background-color: #1746a2!important;
+    background-image: linear-gradient(72deg, rgb(11 33 66 / 0%) 22%, #6085be 56%, #00bdb600 86%, #fff) !important;
+    color: #fff!important;
+  }
+  .card-process{
+    color: #fff!important;
+    background-image: url('@/assets/processo.png'); /* Caminho da imagem */
+    background-size: cover;  /* Garante que a imagem cubra o card */
+    background-repeat: no-repeat;  /* Evita repetição da imagem */
+  }
 </style>

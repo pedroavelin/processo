@@ -3,7 +3,7 @@
     <v-sheet rounded>
       <v-card class="mx-auto px-6 py-8" width="350">
         <v-form @submit.prevent="login()">
-          
+
           <v-text-field
             v-model="user.email"
             class="mb-2"
@@ -54,9 +54,9 @@ const user = reactive({
       auth.setToken(data.access_token);
       auth.setUser(data.user)
 
-      router.push({ name: 'home' });
+      router.push({ name: 'processos' });
     } catch (error) {
       console.log(error?.response?.data);
     }
-  } 
+  }
 </script>
