@@ -3,8 +3,8 @@
     <v-container fluid>
       <v-row>
         <v-col v-for="n in 30" :key="n" class="col-sm-2 col-md-3 col-lg-3">
-          <v-card class="card-process" subtitle="11/2012" elevation="16" @click="modalInfoProcess" prepend-icon="mdi-folder-open" link height="150">
-            <v-card-subtitle><span class="changeColor">Roubo Qualificado concorrido com furto</span></v-card-subtitle>
+          <v-card class="card-process" subtitle="11/2012" elevation="16" @click="modalInfoProcess" prepend-icon="mdi-folder-open" height="150">
+            <v-card-subtitle><span>Roubo Qualificado concorrido com furto</span></v-card-subtitle>
             <v-card-text>
               Julgamento: 12/10/2025 <br>
               Arguído(s): 3 <br>
