@@ -1,6 +1,6 @@
 <template>
     <v-navigation-drawer v-model="drawerStore.drawer" temporary>
-    <v-img src="https://picsum.photos/1920/1080?random" gradient="to top right, rgba(19,84,122,.90), rgba(128,208,199,.90)" height="80" cover class="pt-2">
+    <v-img src="https://picsum.photos/1920/1080?random" gradient="to top right, rgba(19,84,122,.8), rgba(128,208,199,.8)" height="80" cover class="pt-2">
       <v-list>
         <v-list-item
           prepend-avatar="https://media.licdn.com/dms/image/C4D03AQF7jP4O_1Dh1Q/profile-displayphoto-shrink_400_400/0/1630611358440?e=1718236800&v=beta&t=aQkK_GYU9_nrDrrO3Adzq2_E1YI0Tz7rngwdHLJG900"

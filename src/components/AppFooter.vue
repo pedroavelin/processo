@@ -6,7 +6,7 @@
 
     <router-link to="/perfil" class="text-decoration-none mx-3 text-white" href="#!" rel="noopener noreferrer">
       <span v-if="auth.isAuthenticated()">
-        <p>Utilizador: {{ auth.fullName }}</p>
+        <p class="text-uppercase"> {{ auth.fullName }}</p>
       </span>
       </router-link>
     <div
