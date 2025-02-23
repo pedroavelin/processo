@@ -2,7 +2,6 @@
    <AppBar/>
    <NavigationDrawer/>
   <v-main class="style-1">
-    <v-img class="img-background" cover gradient="to top right, rgba(1,1,2,.1),  rgba(2,3,1,.1)" src="@/assets/bagImg.jpg"/>
     <div class="content-container-process">
       <ListProcess />
     </div>
