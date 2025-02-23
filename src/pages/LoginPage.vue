@@ -2,7 +2,9 @@
   <v-container class="d-flex justify-center align-center" style="height: 100vh;">
     <v-sheet rounded>
       <v-card elevation="10" class="mx-auto px-6 py-8" width="350">
-        
+        <h2 class="text-h6 mb-4">Entrar</h2>
+
+      <div class="text-body-2 mb-3 text-center">Seja bem vindo. Preencha os campos abaixo para ter acesso aos seus processos</div>
         <v-form @submit.prevent="login()">
 
           <v-text-field
