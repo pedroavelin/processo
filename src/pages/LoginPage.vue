@@ -1,5 +1,5 @@
 <template>
-  <v-container class="d-flex justify-center align-center" style="height: 100vh;">
+  <v-container fluid class="d-flex justify-center align-center bg-indigo" style="height: 100vh;">
     <v-sheet rounded>
       <v-card elevation="10" class="mx-auto px-6 py-8" width="350">
         <h2 class="text-h6 mb-4">Entrar</h2>
@@ -13,22 +13,23 @@
             label="Seu Email"
             clearable
             placeholder="Digite o seu email"
+            density="compact"
           ></v-text-field>
 
           <v-text-field
             v-model="user.password"
             label="Palavra passe"
             placeholder="Digite a sua palavra passe"
+            density="compact"
             clearable
           ></v-text-field>
-<br>
+          <br/>
           <v-btn
-            color="success"
+            color="primary"
             size="large"
             type="submit"
             variant="flat"
-            block
-          >
+            block>
             Entrar
           </v-btn>
         </v-form>
